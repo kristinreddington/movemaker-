@@ -1,0 +1,16 @@
+<%= @lesson.name %>
+<%= @lesson.display_date %>
+
+<% if current_user.admin %>
+<%= link_to "Edit lesson", edit_lesson_path(@lesson) %>
+
+<%else%>
+<h2>Attend lesson</h2>
+<% form_for @lesson, url: user_bookings_path(current_user) do |f| %>
+<%= f.hidden_field :user_id, value: current_user.id %>
+<%= f.hidden_field :lesson_id, value: @lesson.id %>
+<%= f.submit "Book this lesson" %>
+<%end%>
+
+
+<%end%>

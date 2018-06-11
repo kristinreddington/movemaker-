@@ -1,0 +1,25 @@
+<%= form_for(@lesson) do |f| %>
+  <div class="form-group">
+    <%= f.label :name, "Lesson name" %><br>
+    <%= f.text_field :name, class: "form-control" %></div>
+
+  <div class="form-group">
+    <%= f.label :genre %><br>
+    <%= f.select :genre,['Ballet', 'Hip Hop', 'Fundamentals', 'Contemporary'], class: "form-control" %></div>
+
+  <div class="form-group">
+    <%= f.label :level %><br>
+    <%= f.select :level,['beginner', 'intermediate', 'advanced'], class: "form-control" %></div>
+
+  <div class="form-group">
+    <%= f.label :date %><br>
+    <%= f.date_field :date, class: "form-control" %></div>
+
+    <div class="form-group">
+      <%= f.label :time %><br>
+      <%= f.time_field :time, class: "form-control" %></div><br>
+
+  <div class="actions">
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

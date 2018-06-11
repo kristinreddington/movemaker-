@@ -1,0 +1,5 @@
+
+
+<% @lessons.each do |lesson| %>
+<%= link_to lesson.name, lesson_path(lesson)  %>
+<% end  %>

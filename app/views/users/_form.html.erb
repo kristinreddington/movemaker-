@@ -1,0 +1,19 @@
+<%= form_for @user do |f| %>
+<div class="form-group">
+  <%= f.label :name %><br>
+  <%= f.text_field :name %></div>
+<br />
+
+<div class="form-group">
+  <%= f.label :password %><br>
+  <%= f.password_field :password %></div>
+<br />
+
+<div class="form-group">
+  <%= f.label :level %><br>
+  <%= f.select :level, ['beginner', 'intermediate', 'advanced']%></div><br>
+
+<div class="actions">
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+<% end %>
