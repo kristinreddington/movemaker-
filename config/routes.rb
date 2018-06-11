@@ -1,3 +1,15 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  root 'static_pages#home'
+
+  resources :lessons
+
+  resources :users do
+    post '/bookings' => 'bookings#create'
+    resources :bookings, only: [:destroy, :show]
+  end
+
+  get '/signin' => 'sessions#new'
+  resources :sessions, only: [:create]
+  post '/signout' => 'sessions#destroy'
 end
