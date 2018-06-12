@@ -1,17 +1,73 @@
-<h1>Sign in</h1>
-
+<div class= "form-inline">
 <%= form_for @user, url: sessions_path do |f| %>
-  <div class="field">
+  <div class="form-control input-sm">
     <%= f.label :name %><br>
     <%= f.text_field :name %><br>
-  </div></div>
-  <div class="field">
+  </div>
+
+  <div class="form-control input-sm">
     <%= f.label :password %><br>
     <%= f.password_field :password%>
   </div>
-  <div class="action">
-    <br>
+<br />
+  <div class="btn">
+<br><br>
     <%= f.submit "Sign In" %>
   </div>
-
 <% end %>
+</div>
+<!-- bootstrap override -->
+<style>
+
+.form-control {
+   margin-left: 10px;
+   border: 0;
+   box-shadow: none;
+
+ }
+ .form-inline {
+   display: flex;
+   flex-flow: column;
+   margin: 50px;
+ }
+
+ label {
+    color: #4f738a;
+    font-size: 1.16667em;
+    cursor: pointer;
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.25em;
+
+  }
+   input[type="submit"] {
+    background: #9ecfca;
+    color: #4f738a;
+    box-shadow: none;
+    font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+    font-weight: 300;
+    font-size: 1em;
+    text-transform: uppercase;
+    border: 0;
+    letter-spacing: 1px;
+    border-radius: 2px;
+    max-height: 30px;
+}
+.btn {
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: inherit;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  display: block;
+}
+
+ .btn:focus {
+  box-shadow: none;
+  border: 0;
+ }
+ </style>
