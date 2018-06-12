@@ -1,5 +1,8 @@
-
-
+<% if current_user.admin %>
+<%=link_to("New lesson", new_lesson_path)%>
+<%end%>
+<ul>
 <% @lessons.each do |lesson| %>
-<%= link_to lesson.name, lesson_path(lesson)  %>
-<% end  %>
+<li><%= link_to(lesson.name, lesson_path(lesson))%> </li>
+<%end%>
+</ul>

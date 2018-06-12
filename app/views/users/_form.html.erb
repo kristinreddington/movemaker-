@@ -13,7 +13,19 @@
   <%= f.label :level %><br>
   <%= f.select :level, ['beginner', 'intermediate', 'advanced']%></div><br>
 
+  <strong> Check if you are an admin </strong> <%= check_box("user", "admin") %>
+
 <div class="actions">
     <%= f.submit class: "btn btn-primary" %>
   </div>
 <% end %>
+<style>
+
+.form-group{
+  position: relative;
+  display: inline-block;
+  margin-left: 300px;
+  margin-top: 100px;
+}
+
+ </style>

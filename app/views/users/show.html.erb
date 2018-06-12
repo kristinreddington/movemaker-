@@ -1,8 +1,15 @@
+
 <h1><%= @user.name %></h1>
 <%= link_to("Log Out", {:controller=> "sessions", :action=> "destroy"}, :method => :post) %>
-
+<%= link_to("Edit profile settings", edit_user_path(@user)) %>
+<%= link_to("All lessons", lessons_path) %>
 <ul>
+<% if !@user.admin %>
 <% @user.bookings.each do |b| %>
-<li><%= link_to b.lesson.name, user_booking_path(current_user, b) %></li><br>
-<li><%= b.lesson.display_date %></li>
-<% end %>
+<h3><%= b.lesson.name %></h3>
+<li><%= b.lesson.display_date %></li><br>
+<li><%= link_to "Cancel Reservation", [@user, b], :method => :delete %></li>
+  <%end%>
+<%end%>
+
+</ul>
