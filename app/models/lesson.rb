@@ -20,5 +20,8 @@ class Lesson < ApplicationRecord
     expired_days.include?(self) || expired_times.include?(self)
   end
 
+  def expired_lessons
+    Lesson.where('date < ?' && 'time < ?', Datetime.now, Time.now)
+  end 
 
 end

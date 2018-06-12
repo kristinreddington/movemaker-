@@ -4,9 +4,10 @@ class User < ApplicationRecord
   has_many :lessons, :through => :bookings
 
   validates :name, :presence => true
-  #before_validation :strip_whitespace
+  validates :name, :uniqueness => {message: -> (object, data) do
+    "Hey #{object.name}, #{data.value} has already been taken! Please try with another name."
+  end }
+  
+  auto_strip_attributes :name
 
-  #def strip_whitespace
-    #self.name.gsub!(/(\A\s*|\s*\z)/, '')
-  #end
 end
