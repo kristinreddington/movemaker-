@@ -1,6 +1,6 @@
 
 <h1><%= @user.name %></h1>
-<%= link_to("Log Out", {:controller=> "sessions", :action=> "destroy"}, :method => :post) %>
+<%= link_to("Log out", logout_path) %>
 <%= link_to("Edit profile settings", edit_user_path(@user)) %>
 <%= link_to("All lessons", lessons_path) %>
 <ul>
