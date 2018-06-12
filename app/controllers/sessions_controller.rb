@@ -1,3 +1,4 @@
+require 'pry'
 class SessionsController < ApplicationController
 
   def new
@@ -9,7 +10,7 @@ class SessionsController < ApplicationController
 end
 
   def create
-    @user = User.find_by(:name => user_params[:name])
+    @user = User.find_by(:name => user_params[:name].strip)
     if @user.try(:authenticate, user_params[:password])
       session[:user_id] = @user.id
       redirect_to user_path(@user)

@@ -5,7 +5,7 @@ class LessonsController < ApplicationController
   end
 
   def show
-    @lesson = Lesson.find_by_id(:id => params[:id])
+    find_lesson
     @user = current_user
   end
 
@@ -14,6 +14,7 @@ class LessonsController < ApplicationController
       @lesson = Lesson.new
     else
       redirect_to user_path(current_user)
+    end
   end
 
   def create
@@ -22,18 +23,26 @@ class LessonsController < ApplicationController
   end
 
   def edit
+    find_lesson
   end
 
   def update
-    lesson = Lesson.find_by_id(:id => params[:id])
-    lesson.update(lesson_params)
-    redirect_to lesson_path(lesson)
+    find_lesson
+    @lesson.update(lesson_params)
+    redirect_to lesson_path(@lesson)
   end
 
   def destroy
+    find_lesson
+    @lesson.delete
+    redirect_to lessons_path
   end
 
 private
+
+    def find_lesson
+      @lesson = Lesson.find_by(:id => params[:id])
+    end
 
     def lesson_params
       params.require(:lesson).permit(
@@ -44,4 +53,6 @@ private
         :time
       )
     end
+
+
 end

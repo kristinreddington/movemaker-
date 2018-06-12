@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   def new
     if logged_in?
-      redirect_to user_path(current_user)
+        redirect_to user_path(current_user)
     else
       @user = User.new
     end
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
   def show
     if logged_in?
-      @user = User.find_by_id(:id => params[:id])
+      find_user
       @message = params[:message]
     else
       redirect_to root_path
@@ -28,10 +28,14 @@ class UsersController < ApplicationController
 end
 
   def edit
+    find_user
+    @user.update(user_params)
+    @user.save
+    redirect_to user_path(@user)
   end
 
   def update
-    @user = User.find_by(:id => params[:id])
+    find_user
     @user.update(user_params)
     @user.save
     redirect_to user_path(@user)
@@ -39,9 +43,15 @@ end
 
   def destroy
     if current_user
-      @user = User.find_by(:id => params[:id]).destroy
+      find_user.destroy
       redirect_to root_path
     end
+  end
+
+  private
+
+  def find_user
+    @user = User.find_by(:id => params[:id])
   end
 
   def user_params
