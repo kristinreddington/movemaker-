@@ -25,6 +25,7 @@
     </div>
   </div>
 </nav>
+<%= render partial: "layouts/flash-errors" %>
 
 
 <h2><%= @user.name %></h2>
@@ -33,9 +34,14 @@
 <ul>
 <% if !@user.admin %>
 <% @user.bookings.each do |b| %>
-<h3><%= b.lesson.name %></h3>
-<li><%= b.lesson.display_date %></li><br>
-<li><%= link_to "Cancel Reservation", [@user, b], :method => :delete %></li>
+
+
+    <p id="bold"><%= b.lesson.name %><br></p>
+
+    <p><%= b.lesson.display_date %><br></p>
+<p><%= link_to "Cancel Reservation", delete_booking_path(b) %></p>
+<hr>
+
   <%end%>
 <%end%>
 
@@ -74,5 +80,10 @@ p {
     font-size: 12px;
     letter-spacing: 1px;
     margin-left: 15px;
+}
+
+
+#bold {
+  text-decoration: underline;
 }
 </style>
