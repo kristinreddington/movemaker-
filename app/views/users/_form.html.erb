@@ -13,6 +13,11 @@
 </div>
 
 <div class="form-control input-sm">
+  <%= f.label :email %><br>
+  <%= f.email_field :email %><br>
+</div>
+
+<div class="form-control input-sm">
   <%= f.label :level %><br>
   <%= f.select :level, ['beginner', 'intermediate', 'advanced'], {class: "carousel-control"}%></div>
 

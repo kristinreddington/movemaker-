@@ -1,8 +1,14 @@
 <div class= "form-inline">
 <%= form_for @user, url: sessions_path do |f| %>
+
   <div class="form-control input-sm">
     <%= f.label :name %><br>
     <%= f.text_field :name %><br>
+  </div>
+
+  <div class="form-control input-sm">
+    <%= f.label :email %><br>
+    <%= f.email_field :email %><br>
   </div>
 
   <div class="form-control input-sm">
@@ -10,10 +16,12 @@
     <%= f.password_field :password%>
   </div>
 <br />
+
   <div class="btn">
 <br><br>
     <%= f.submit "Sign In" %>
   </div>
+
 <% end %>
 </div>
 <!-- bootstrap override -->
