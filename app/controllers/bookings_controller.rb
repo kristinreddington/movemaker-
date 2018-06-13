@@ -2,13 +2,17 @@ class BookingsController < ApplicationController
 
 
   def create
-    booking = Booking.create(
-    :user_id => (params[:lesson][:user_id]),
-    :lesson_id => (params[:lesson][:lesson_id])
-)
-   message = booking.book_lesson
+      booking = Booking.new(
+        :user_id => (params[:lesson][:user_id]),
+        :lesson_id => (params[:lesson][:lesson_id])
+      )
+      if !booking.expired_lesson?
+        booking.save
+      end
+    message = booking.book_lesson
    redirect_to user_path(booking.user, :message => message)
-  end
+
+end
 
   def destroy
     @booking = Booking.find_by(:id => params[:id])

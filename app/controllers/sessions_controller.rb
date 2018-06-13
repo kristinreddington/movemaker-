@@ -2,6 +2,7 @@ require 'pry'
 class SessionsController < ApplicationController
 
   def new
+
     if logged_in?
       redirect_to user_path(current_user)
     else
@@ -20,7 +21,7 @@ end
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
-      redirect_to signin_path
+      redirect_to signin_path, danger:  "Invalid email or password"
     end
   end
 end
@@ -35,7 +36,8 @@ def destroy
     def user_params
       params.require(:user).permit(
         :name,
-        :password
+        :password,
+        :email
       )
     end
 
