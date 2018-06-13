@@ -29,9 +29,6 @@ end
 
   def edit
     find_user
-    @user.update(user_params)
-    @user.save
-    redirect_to user_path(@user)
   end
 
   def update
@@ -55,6 +52,6 @@ end
   end
 
   def user_params
-    params.require(:user).permit(:name, :password, :level, :admin)
+    params.require(:user).permit(:name, :password, :level, :admin, :email)
   end
 end

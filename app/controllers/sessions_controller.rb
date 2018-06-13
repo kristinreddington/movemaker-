@@ -2,7 +2,7 @@ require 'pry'
 class SessionsController < ApplicationController
 
   def new
-  if !!logged_in?
+    if logged_in?
       redirect_to user_path(current_user)
     else
     @user = User.new
@@ -10,16 +10,22 @@ class SessionsController < ApplicationController
 end
 
   def create
-    @user = User.find_by(:name => user_params[:name].strip)
-    if @user.try(:authenticate, user_params[:password])
+    if auth_hash = auth
+      @user = User.find_or_create_by_omniauth(auth_hash)
+      session[:user_id] = @user.id
+      redirect_to signin_path
+    else
+      @user = User.find_by(:email => user_params[:email])
+    if @user && @user.try(:authenticate, user_params[:password])
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
       redirect_to signin_path
     end
   end
+end
 
-  def destroy
+def destroy
     session[:user_id] = nil
     redirect_to root_path
   end
@@ -31,6 +37,10 @@ end
         :name,
         :password
       )
+    end
+
+    def auth
+      request.env['omniauth.auth']
     end
 
 end
