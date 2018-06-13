@@ -1,7 +1,7 @@
 class LessonsController < ApplicationController
 
   def index
-    @lessons = Lesson.all
+    @lessons = Lesson.non_expired_lessons
   end
 
   def show

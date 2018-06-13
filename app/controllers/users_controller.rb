@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   def show
     if logged_in?
       find_user
-      @message = params[:message]
+      #@message = params[:message]
     else
       redirect_to root_path
   end

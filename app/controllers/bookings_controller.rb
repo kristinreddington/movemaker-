@@ -2,15 +2,12 @@ class BookingsController < ApplicationController
 
 
   def create
-      booking = Booking.new(
+      booking = Booking.create(
         :user_id => (params[:lesson][:user_id]),
         :lesson_id => (params[:lesson][:lesson_id])
       )
-      if !booking.expired_lesson?
-        booking.save
-      end
     message = booking.book_lesson
-   redirect_to user_path(booking.user, :message => message)
+   redirect_to user_path(booking.user, danger: message)
 
 end
 
