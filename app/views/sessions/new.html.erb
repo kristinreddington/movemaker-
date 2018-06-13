@@ -9,6 +9,7 @@
     </div>
   </div>
 </nav>
+<%= render partial: "flash-errors" %>
 
 <div class= "form-inline">
 <%= form_for @user, url: sessions_path do |f| %>
@@ -89,5 +90,13 @@
  .btn:focus {
   box-shadow: none;
   border: 0;
+ }
+
+ footer {
+   position: absolute;
+   height: 20px;
+   padding-top: 100px;
+   bottom: 0;
+   width: 100%;
  }
  </style>

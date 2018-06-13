@@ -1,5 +1,17 @@
-<%= @lesson.name %>
-<%= @lesson.display_date %>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href=<%=user_path(current_user) %>>Movemaker</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+    </div>
+  </div>
+</nav>
+
+<p><%= @lesson.name %></p>
+<p><%= @lesson.display_date %></p>
 
 <% if current_user.admin %>
 <%= link_to "Edit lesson", edit_lesson_path(@lesson) %>
@@ -15,3 +27,28 @@
 
 
 <%end%>
+<style>
+footer {
+  position: absolute;
+  height: 20px;
+  padding-top: 100px;
+  bottom: 0;
+  width: 100%;
+}
+
+p {
+  -webkit-margin-before: 0.83em;
+    -webkit-margin-after: 0.83em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    display: block;
+    line-height: 1.6;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-left: 15px;
+}
+
+a {
+  margin-left: 15px;
+}
+</style>

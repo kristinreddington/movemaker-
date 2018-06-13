@@ -27,10 +27,9 @@
 </nav>
 
 
-<h1><%= @user.name %></h1>
-<%= link_to("Log out", logout_path) %>
-<%= link_to("Edit profile settings", edit_user_path(@user)) %>
-<%= link_to("All lessons", lessons_path) %>
+<h2><%= @user.name %></h2>
+<p><%= @user.email %></p>
+<p>Level: <%= @user.level %></p>
 <ul>
 <% if !@user.admin %>
 <% @user.bookings.each do |b| %>
@@ -41,3 +40,39 @@
 <%end%>
 
 </ul>
+
+<!--Bootstrap override -->
+<style>
+
+footer {
+  position: absolute;
+  height: 20px;
+  padding-top: 100px;
+  bottom: 0;
+  width: 100%;
+}
+
+h2 {
+  -webkit-margin-before: 0.83em;
+    -webkit-margin-after: 0.83em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    display: block;
+    line-height: 1.6;
+    font-size: 20px;
+    letter-spacing: 1px;
+    margin-left: 15px;
+}
+
+p {
+  -webkit-margin-before: 0.83em;
+    -webkit-margin-after: 0.83em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    display: block;
+    line-height: 1.6;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-left: 15px;
+}
+</style>

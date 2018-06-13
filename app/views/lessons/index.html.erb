@@ -11,10 +11,38 @@
 </nav>
 
 <% if current_user.admin %>
-<%=link_to("New lesson", new_lesson_path)%>
+<p><%=link_to("New lesson", new_lesson_path)%></p>
 <%end%>
 <ul>
 <% @lessons.each do |lesson| %>
 <li><%= link_to(lesson.name, lesson_path(lesson))%> </li>
 <%end%>
 </ul>
+
+<!--Bootstrap override -->
+<style>
+
+footer {
+  position: absolute;
+  height: 20px;
+  padding-top: 100px;
+  bottom: 0;
+  width: 100%;
+}
+p {
+  -webkit-margin-before: 0.83em;
+    -webkit-margin-after: 0.83em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    display: block;
+    line-height: 1.6;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-left: 15px;
+}
+
+li {
+  margin-top: 10px; 
+}
+
+</style>

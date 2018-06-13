@@ -1,2 +1,70 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href=<%=user_path(current_user) %>>Movemaker</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+    </div>
+  </div>
+</nav>
+
 <h1>Create a new lesson</h1>
 <%= render 'form', locals: {lesson: @lesson} %>
+<style>
+.btn {
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: inherit;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  display: block;
+}
+
+ .btn:focus {
+  box-shadow: none;
+  border: 0;
+ }
+
+ input[type="submit"] {
+  background: #9ecfca;
+  color: #4f738a;
+  box-shadow: none;
+  font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  font-weight: 300;
+  font-size: 1em;
+  text-transform: uppercase;
+  border: 0;
+  letter-spacing: 1px;
+  border-radius: 2px;
+  max-height: 30px;
+  align: center;
+}
+.form-control {
+
+   box-shadow: none;
+
+ }
+
+ select {
+   border: none;
+ }
+ .no-border {
+   border: none;
+ }
+
+ label {
+    color: #4f738a;
+    font-size: 1.16667em;
+    cursor: pointer;
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.25em;
+}
+
+</style>

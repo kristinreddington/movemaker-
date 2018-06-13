@@ -1,25 +1,61 @@
+<div class= "form-inline">
 <%= form_for(@lesson) do |f| %>
-  <div class="form-group">
+
+  <div class="form-control input-sm">
     <%= f.label :name, "Lesson name" %><br>
-    <%= f.text_field :name, class: "form-control" %></div>
+    <%= f.text_field :name, class: "form-control" %><br>
+  </div>
 
-  <div class="form-group">
-    <%= f.label :genre %><br>
-    <%= f.select :genre,['Ballet', 'Hip Hop', 'Fundamentals', 'Contemporary'], class: "form-control" %></div>
-
-  <div class="form-group">
-    <%= f.label :level %><br>
-    <%= f.select :level,['beginner', 'intermediate', 'advanced'], class: "form-control" %></div>
-
-  <div class="form-group">
+  <div class="form-control input-sm">
     <%= f.label :date %><br>
-    <%= f.date_field :date, class: "form-control" %></div>
+    <%= f.date_field :date, class: "form-control" %><br>
+  </div>
 
-    <div class="form-group">
+    <div class="form-control input-sm">
       <%= f.label :time %><br>
-      <%= f.time_field :time, class: "form-control" %></div><br>
+      <%= f.time_field :time, class: "form-control" %><br>
+    </div>
 
-  <div class="actions">
+  <div class="form-control input-sm no-border" >
+    <%= f.label :genre %><br>
+    <%= f.select :genre,['Ballet', 'Hip Hop', 'Fundamentals', 'Contemporary'], class: "form-control" %><br>
+  </div>
+
+  <div class="form-control input-sm no-border">
+    <%= f.label :level %><br>
+    <%= f.select :level,['beginner', 'intermediate', 'advanced'], class: "form-control" %><br>
+  </div>
+
+  <div class="btn">
     <%= f.submit class: "btn btn-primary" %>
   </div>
 <% end %>
+
+<style>
+
+
+h1 {
+  text-align: inherit;
+  font-size: 2em;
+  margin: .67em 0;
+  margin-bottom: 30px;
+  margin-top: 10;
+  margin-left: 10px;
+  font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #4f738a;
+  line-height: 1.6;
+}
+footer {
+  position: absolute;
+  height: 20px;
+  padding-top: 100px;
+  bottom: 0;
+  width: 100%;
+}
+.form-control {
+  margin-left: 10px;
+}
+
+
+</style>
