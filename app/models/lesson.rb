@@ -22,9 +22,9 @@ class Lesson < ApplicationRecord
   end
 
   def self.non_expired_lessons
-    future_lessons = Lesson.where('date > ?', Date.today)
-    lessons_today = Lesson.where('date = ? AND time > ?', Date.today, Time.now)
-    future_lessons || lessons_today
+
+   Lesson.where('date > ?', Date.today).or(Lesson.where('date = ? AND time > ?', Date.today, Time.now))
+
   end
 
 end
