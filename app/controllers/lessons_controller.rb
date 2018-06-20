@@ -4,6 +4,10 @@ class LessonsController < ApplicationController
     @lessons = Lesson.non_expired_lessons
   end
 
+  def expired
+    @lessons = Lesson.expired_lessons
+  end
+
   def show
     find_lesson
     @user = current_user
