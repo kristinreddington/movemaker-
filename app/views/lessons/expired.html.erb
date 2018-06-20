@@ -6,40 +6,25 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href=<%=expired_lessons_path %>>Expired Lessons</a>
-        </li>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
     </div>
   </div>
 </nav>
 
-<% if current_user.admin %>
-<p><%=link_to("New lesson", new_lesson_path)%></p>
-<%end%>
+<% if @lessons %>
+<% @lessons.each do |lesson|%>
 <ul>
-<% @lessons.each do |lesson| %>
-<li><%= link_to(lesson.name, lesson_path(lesson))%> </li>
-<%end%>
+<li><%= lesson.name %></li>
+<p><%= lesson.date %></p>
 </ul>
+<%end%>
+<%end%>
 
-<!--Bootstrap override -->
 <style>
 
-footer {
-  position: absolute;
-  height: 20px;
-  padding-top: 100px;
-  bottom: 0;
-  width: 100%;
+li {
+  margin-top: 15px; 
 }
+
 p {
   -webkit-margin-before: 0.83em;
     -webkit-margin-after: 0.83em;
@@ -51,9 +36,11 @@ p {
     letter-spacing: 1px;
     margin-left: 15px;
 }
-
-li {
-  margin-top: 10px;
+footer {
+  position: absolute;
+  height: 20px;
+  padding-top: 100px;
+  bottom: 0;
+  width: 100%;
 }
-
 </style>

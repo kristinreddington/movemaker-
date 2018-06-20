@@ -13,7 +13,7 @@
 <p><%= "#{@user.name}'s Scheduled booking" %></p>
 <p><%= @booking.lesson.name %></p>
 <ul>
-  <li><%= link_to "Edit booking", edit_user_booking_path(@user, @booking) %></li>
+  <li><%= link_to "Manage notes", edit_user_booking_path(@user, @booking) %></li>
   <li><%= link_to "Cancel Reservation", delete_booking_path(@booking) %></li>
 </ul>
 
