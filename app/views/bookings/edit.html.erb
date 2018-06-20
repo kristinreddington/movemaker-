@@ -1,0 +1,100 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href=<%=user_path(current_user) %>>Movemaker</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+    </div>
+  </div>
+</nav>
+
+<div class= "form-inline">
+<%= form_for @booking, :url => {:action => :update, :method => :patch} do |f| %>
+
+<div class="form-control input-sm">
+  <%= f.label "Notes/Reminders" %><br>
+  <%= f.text_area :comment %><br>
+</div>
+
+<div class="btn">
+
+  <%=f.submit "Save booking"%>
+</div>
+<% end %>
+</div>
+
+
+  <!-- bootstrap override -->
+  <style>
+
+  .form-control {
+     margin-left: 10px;
+     border: 0;
+     box-shadow: none;
+
+   }
+   .form-inline {
+     display: flex;
+     flex-flow: column;
+     margin: 50px;
+   }
+
+   label {
+      color: #4f738a;
+      font-size: 1.16667em;
+      cursor: pointer;
+      display: block;
+      font-weight: 500;
+      margin-bottom: 0.25em;
+
+    }
+    strong {
+      text-align: center;
+      font-size: 1em;
+      font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      color: #4f738a;
+      line-height: 1.6;
+
+    }
+     input[type="submit"] {
+      background: #9ecfca;
+      color: #4f738a;
+      box-shadow: none;
+      font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+      font-weight: 300;
+      font-size: 1em;
+      text-transform: uppercase;
+      border: 0;
+      letter-spacing: 1px;
+      border-radius: 2px;
+      max-height: 30px;
+  }
+
+  .btn {
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: inherit;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    display: block;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 2em;
+    margin: .67em 0;
+    margin-bottom: 30px;
+    margin-top: 10;
+    font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: #4f738a;
+    line-height: 1.6;
+ }
+   </style>

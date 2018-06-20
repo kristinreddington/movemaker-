@@ -10,41 +10,17 @@
   </div>
 </nav>
 
-<p><%= @lesson.name %></p>
-<p><%= @lesson.display_date %></p>
+<p><%= "#{@user.name}'s Scheduled booking" %></p>
+<p><%= @booking.lesson.name %></p>
+<ul>
+  <li><%= link_to "Edit booking", edit_user_booking_path(@user, @booking) %></li>
+  <li><%= link_to "Cancel Reservation", delete_booking_path(@booking) %></li>
+</ul>
 
-<% if current_user.admin %>
-<%= link_to "Edit lesson", edit_lesson_path(@lesson) %>
-<%= link_to "Delete lesson", [@lesson], :method=> :delete %>
-
-
-<%else%>
-<%= form_for @lesson, url: user_bookings_path(current_user), method: :post do |f| %>
-<%= f.hidden_field :user_id, value: current_user.id %>
-<%= f.hidden_field :lesson_id, value: @lesson.id %>
-<%= f.submit "Book this lesson" %>
-<%end%>
+<!-- bootstrap override -->
 
 
-<%end%>
 <style>
-
-input[type="submit"] {
- background: #9ecfca;
- color: #4f738a;
- box-shadow: none;
- font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
- font-weight: 300;
- font-size: 1em;
- text-transform: uppercase;
- border: 0;
- letter-spacing: 1px;
- border-radius: 2px;
- max-height: 30px;
- margin-left: 15px; 
- align: center;
-}
-
 footer {
   position: absolute;
   height: 20px;

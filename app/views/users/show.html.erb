@@ -26,22 +26,22 @@
   </div>
 </nav>
 <%= render partial: "layouts/flash-errors" %>
-
-
+<% if @user.admin %>
+<h4>ADMIN</h4>
+<%end%>
 <h2><%= @user.name %></h2>
 <p><%= @user.email %></p>
-<p>Level: <%= @user.level %></p>
-<ul>
 <% if !@user.admin %>
-<% @user.bookings.each do |b| %>
-
-
-    <p id="bold"><%= b.lesson.name %><br></p>
-
-    <p><%= b.lesson.display_date %><br></p>
-<p><%= link_to "Cancel Reservation", delete_booking_path(b) %></p>
+<p>Level: <%= @user.level %></p>
 <hr>
-
+<% @user.bookings.each do |b| %>
+  <p id="bold"><%= link_to b.lesson.name, user_booking_path(@user,b) %><br></p>
+  <p><%= b.lesson.display_date %><br></p>
+  <% if b.comment %>
+  <ul>
+  <li><%= b.comment %><br></li>
+</ul>
+<%end%>
   <%end%>
 <%end%>
 
@@ -68,6 +68,11 @@ h2 {
     font-size: 20px;
     letter-spacing: 1px;
     margin-left: 15px;
+}
+h4 {
+  letter-spacing: 1px;
+  margin-left: 15px;
+  margin-top: 20px;
 }
 
 p {
