@@ -9,8 +9,12 @@ class LessonsController < ApplicationController
   end
 
   def show
-    find_lesson
+    @lesson = Lesson.find_by(:id => params[:id])
     @user = current_user
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @lesson }
+    end
   end
 
   def new

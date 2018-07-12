@@ -14,14 +14,17 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
-      render 'new'
+      redirect_to new_user_path, danger: "Please provide a unique name, email, secure password"
     end
   end
 
   def show
     if logged_in?
-      find_user
-      #@message = params[:message]
+      @user = User.find_by(:id => params[:id])
+      respond_to do |format|
+        format.html { render :show }
+        format.json { render json: @user }
+      end
     else
       redirect_to root_path
   end
