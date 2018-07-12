@@ -1,6 +1,7 @@
 class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :lesson
+  has_many :comments
 
   def expired_lesson?
     expired_days = Lesson.where('date < ?', DateTime.now)
