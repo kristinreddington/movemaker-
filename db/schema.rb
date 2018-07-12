@@ -10,13 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_10_173833) do
+ActiveRecord::Schema.define(version: 2018_07_12_194813) do
 
   create_table "bookings", force: :cascade do |t|
     t.integer "user_id"
     t.integer "lesson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "comment"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "booking_id"
+    t.integer "user_id"
   end
 
   create_table "lessons", force: :cascade do |t|
@@ -36,6 +45,8 @@ ActiveRecord::Schema.define(version: 2018_06_10_173833) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
+    t.string "uid"
+    t.string "email"
   end
 
 end

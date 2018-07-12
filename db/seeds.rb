@@ -3,17 +3,14 @@
 DATA = {
 
   :user_keys =>
-    ["name", "password", "level"],
+    ["name", "password", "level", "email"],
   :users => [
-    ["Madison ","password", "beginner"],
-    ["Misty Copeland", "password", "intermidate"],
-    ["Kristin Reddingon", "password", "intermidate"],
-    ["Megan Charpentier", "password", "beginner"],
-    ["Delaney Glazer", "password", "advanced"],
-    ["Matt Steffanina", "password", "advanced"],
-    ["Davis Cleveland", "password", "advanced"],
-    ["Cole Sand", "password", "intermidate"],
-    ["Quvenzhané Wallis", "password", "beginner"]
+    ["Madison ","password", "beginner", "madison@flatiron.com"],
+    ["Misty Copeland", "password", "intermidate", "misty@flatiron.com"],
+    ["Kristin Reddingon", "password", "intermidate","kristin@flatiron.com"],
+    ["Megan Charpentier", "password", "beginner", "megan@flatiron.com"],
+    ["Delaney Glazer", "password", "advanced", "delaney@flatiron.com"],
+    ["Matt Steffanina", "password", "advanced", "matt@flatiron.com"],
   ],
 
   :admins => [
