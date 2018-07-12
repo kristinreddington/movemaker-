@@ -10,15 +10,28 @@
   </div>
 </nav>
 
-<p><%= "#{@user.name}'s Scheduled booking" %></p>
-<p><%= @booking.lesson.name %></p>
+<p class="userName" data-id="<%=@user.id%>"><%= "#{@user.name}'s Scheduled booking" %></p>
+<a href="#" class="js-next" data-userid="<%=@user.id%>"data-id="<%= @booking.id %>">Next</a> | <a id="editLink" href="/users/<%=current_user.id%>/bookings/<%=@booking.id%>/edit">Edit Booking</a>
+<br><br>
+<h4 class="lessonName"><%= @booking.lesson.name %></h4>
+<p class="lessonDate"><%= @booking.lesson.date %></p><p class="lessonTime"><%= @booking.lesson.time %></p><br>
+<% if @booking.comments %>
 <ul>
-  <li><%= link_to "Manage notes", edit_user_booking_path(@user, @booking) %></li>
-  <li><%= link_to "Cancel Reservation", delete_booking_path(@booking) %></li>
+<% @booking.comments.each do |comment| %>
+<li class="bookingComment"><%= comment.text %></li><a> <%= link_to "X", user_booking_comment_path(current_user, comment)%></a>
 </ul>
+<%end%>
+<%end%>
+<%= form_for @comment, url: user_booking_comments_path(current_user, @booking), method: :post do |f| %>
+<%= f.hidden_field :user_id, value: current_user.id %>
+<%= f.hidden_field :booking_id, value: @booking.id %>
+<%= f.text_field :text, placeholder: "add note" %>
+<%= f.submit "Post" %>
+<%end%>
+
+
 
 <!-- bootstrap override -->
-
 
 <style>
 footer {
@@ -40,8 +53,22 @@ p {
     letter-spacing: 1px;
     margin-left: 15px;
 }
+h4{
+  margin-left: 15px;
+}
 
+li {
+  margin-left: 15px;
+
+  display: inline-block;
+  vertical-align: baseline;
+}
 a {
+  margin-left:15px;
+
+}
+
+.js-next {
   margin-left: 15px;
 }
 </style>

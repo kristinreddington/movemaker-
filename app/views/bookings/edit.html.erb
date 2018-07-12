@@ -23,7 +23,11 @@
   <%=f.submit "Save booking"%>
 </div>
 <% end %>
+<p data-id="<%=@booking.id%>" id="cancelBooking"><%= link_to "Cancel Reservation", delete_booking_path(@booking) %></p>
+
 </div>
+
+
 
 
   <!-- bootstrap override -->
