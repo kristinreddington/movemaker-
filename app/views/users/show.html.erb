@@ -34,19 +34,12 @@
 <% if !@user.admin %>
 <p style="text-align: center;">Level: <%= @user.level %></p>
 <hr>
+<h2>Booked Lessons</h2>
 <% @user.bookings.each do |b| %>
   <p id="bold"><%= link_to b.lesson.name, user_booking_path(@user,b) %><br></p>
-  <p><%= b.lesson.display_date %><br></p>
-  <% if b.comment %>
-  <ul>
-  <li><%= b.comment %><br></li>
-</ul>
-<%end%>
   <%end%>
 <%end%>
-
 </ul>
-
 <!--Bootstrap override -->
 <style>
 
