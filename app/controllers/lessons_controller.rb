@@ -8,6 +8,14 @@ class LessonsController < ApplicationController
     @lessons = Lesson.expired_lessons
   end
 
+  def info
+    @lesson = Lesson.find(params[:id])
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @lesson }
+    end
+  end
+
   def show
     @lesson = Lesson.find_by(:id => params[:id])
     @user = current_user
