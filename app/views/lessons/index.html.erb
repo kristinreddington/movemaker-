@@ -26,12 +26,30 @@
 <%end%>
 <ul>
 <% @lessons.each do |lesson| %>
-<li><%= link_to(lesson.name, lesson_path(lesson))%> </li>
+<p><%= link_to(lesson.name, lesson_path(lesson))%> </p>
+<div id="info-<%= lesson.id %>"></div>
+<button class="js-more" data-id="<%= lesson.id %>">Info...</button>
 <%end%>
-</ul>
+
 
 <!--Bootstrap override -->
 <style>
+.js-more {
+    background: #9ecfca;
+    color: #4f738a;
+    box-shadow: none;
+    font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+    font-weight: 300;
+    font-size: 1em;
+    text-transform: uppercase;
+    border: 0;
+    letter-spacing: 1px;
+    border-radius: 2px;
+    max-height: 30px;
+}
+h4 {
+  margin: 15px;
+}
 
 footer {
   position: absolute;
