@@ -10,23 +10,23 @@ $(function(){
     dataType: "json",
     success: function(response) {
       $("#note_text").val("");
-      let newUserPet = new Comment(response.id, response.user_id, response.booking_id, response.text);
-      let formattedComment = newUserPet.formatComment();
-      $(".notesList").append(formattedComment)
+      let newUserNote = new Note(response.id, response.user_id, response.booking_id, response.text);
+      let formattedNote = newUserNote.formatNote();
+      $(".notesList").append(formattedNote)
     }
   });
 });
 
-function Comment(id, user_id, booking_id, text) {
+function Note(id, user_id, booking_id, text) {
   this.id = id;
   this.user_id = user_id;
   this.booking_id = booking_id;
   this.text = text;
 }
 
-Comment.prototype.formatComment = function(){
-  let commentHtml = '';
-  commentHtml += `<li>${this.text}</li>`
-  return commentHtml;
+Note.prototype.formatNote = function(){
+  let noteHtml = '';
+  noteHtml += `<li>${this.text}</li>`
+  return noteHtml;
 }
 });
