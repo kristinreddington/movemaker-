@@ -6,7 +6,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Movemaker</title>
-
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <!-- Custom styles for this template -->
     <link href="https://blackrockdigital.github.io/startbootstrap-full-width-pics/css/full-width-pics.css" rel="stylesheet">
     <!-- Bootstrap core CSS -->
@@ -14,6 +15,7 @@
   </head>
 
   <body>
+    <%= javascript_include_tag 'application' %>
     <%= render partial: "layouts/flash-errors" %>
     <% unless controller_name == "static_pages" %>
     <!-- Navigation -->

@@ -36,7 +36,12 @@
 <hr>
 <h2>Booked Lessons</h2>
 <% @user.bookings.each do |b| %>
-  <p id="bold"><%= link_to b.lesson.name, user_booking_path(@user,b) %><br></p>
+<ul>
+  <li style="display:inline" class="colored-links">  <%= link_to b.lesson.name, user_booking_path(@user,b) %></li>
+   <li  id="bold" ::before class="colored-links"> <%= link_to "Manage booking", edit_user_booking_path(@user, b) %></li>
+ </ul>
+
+
   <%end%>
 <%end%>
 </ul>
@@ -80,8 +85,40 @@ p {
     margin-left: 15px;
 }
 
+ .colored-links {
+    color: #50748a;
+    background: none;
+    border: 0;
+    padding-bottom: 35px;
+    margin: 0 0 0 -13px;
+    text-align: center;
+    float: none !important;
+    padding: 0px !important;
+  }
+  #bold > *:before {
+    content: "/";
+    color: #aaa;
+    margin: 0 2.2em;
+    position: relative;
+    top: 1px;
+    box-sizing: border-box;
+  }
+  #bold > *:before:hover {
+    color: #aaa;
+  }
+  a:hover {
+    color: #aaa;
+    text-decoration: none;
+  }
+li {
+    display: inline-block;
+    float: none;
+  }
 
-#bold {
-  text-decoration: underline;
-}
+  #commentSection {
+    margin-left: 15px;
+  }
+
+
+
 </style>

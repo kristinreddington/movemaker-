@@ -11,26 +11,18 @@
 </nav>
 
 <p class="userName" data-id="<%=@user.id%>"><%= "#{@user.name}'s Scheduled booking" %></p>
-<a href="#" class="js-next" data-userid="<%=@user.id%>"data-id="<%= @booking.id %>">Next</a> | <a id="editLink" href="/users/<%=current_user.id%>/bookings/<%=@booking.id%>/edit">Edit Booking</a>
+<a href="#" class="js-next" data-userid="<%=@user.id%>"data-id="<%= @booking.id %>">Next</a>
 <br><br>
 <h4 class="lessonName"><%= @booking.lesson.name %></h4>
+<p>Level: <%=@booking.lesson.level%></p>
 <p class="lessonDate"><%= @booking.lesson.date %></p><p class="lessonTime"><%= @booking.lesson.time %></p><br>
-<% if @booking.comments %>
-<ul>
-<% @booking.comments.each do |comment| %>
-<li class="bookingComment"><%= comment.text %></li><a> <%= link_to "X", user_booking_comment_path(current_user, comment)%></a>
-</ul>
-<%end%>
-<%end%>
-<%= form_for @comment, url: user_booking_comments_path(current_user, @booking), method: :post do |f| %>
-<%= f.hidden_field :user_id, value: current_user.id %>
-<%= f.hidden_field :booking_id, value: @booking.id %>
-<%= f.text_field :text, placeholder: "add note" %>
-<%= f.submit "Post" %>
-<%end%>
-
-
-
+<div class="noteSection">
+  <%@booking.notes.each do |note| %>
+<ol>
+  <li><%=note.text%></li>
+</ol>
+  <%end%>
+</div>
 <!-- bootstrap override -->
 
 <style>
@@ -59,13 +51,11 @@ h4{
 
 li {
   margin-left: 15px;
-
   display: inline-block;
   vertical-align: baseline;
 }
 a {
   margin-left:15px;
-
 }
 
 .js-next {

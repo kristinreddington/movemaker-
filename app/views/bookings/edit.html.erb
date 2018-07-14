@@ -9,21 +9,26 @@
     </div>
   </div>
 </nav>
+<h4><%=@booking.lesson.name%></h4>
 
-<div class= "form-inline">
-<%= form_for @booking, :url => {:action => :update, :method => :patch} do |f| %>
-
-<div class="form-control input-sm">
-  <%= f.label "Notes/Reminders" %><br>
-  <%= f.text_area :comment %><br>
-</div>
-
-<div class="btn">
-
-  <%=f.submit "Save booking"%>
-</div>
+<div class="notesList">
+<% @notes.each do |note| %>
+<ul>
+<li><%=note.text%></li>
+</ul>
 <% end %>
-<p data-id="<%=@booking.id%>" id="cancelBooking"><%= link_to "Cancel Reservation", delete_booking_path(@booking) %></p>
+</div>
+<div class= "form-inline">
+  <%= form_for ([@user,  @booking, @note]), :html => {:id => "new-note"} do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :booking_id, value: @booking.id %>
+  <%= f.text_field :text, placeholder: "add note" %>
+  <%= f.submit "Post", :id => "note-submit" %><br><br>
+  <%end%>
+  <p data-id="<%=@booking.id%>" id="cancelBooking"><%= link_to "Cancel Reservation", delete_booking_path(@booking) %></p>
+</div>
+
+
 
 </div>
 
@@ -31,7 +36,16 @@
 
 
   <!-- bootstrap override -->
+
   <style>
+  .notesList {
+    margin: 15px;
+    align-items: center;
+}
+  h4 {
+    margin: 15px;
+    display: flex;
+  }
 
   .form-control {
      margin-left: 10px;
