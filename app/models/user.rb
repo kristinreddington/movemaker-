@@ -2,7 +2,7 @@ class User < ApplicationRecord
   has_secure_password
   has_many :bookings
   has_many :lessons, :through => :bookings
-  has_many :comments, :through => :bookings 
+  has_many :notes, :through => :bookings 
 
   validates :name, :presence => true
   validates :email, :presence => true
