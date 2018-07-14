@@ -6,10 +6,13 @@ $(function () {
       $(".noteSection").empty()
       var notes = data.notes
       notes.forEach(formatNotes);
-      
+      var formatTime = (data["lesson"]["time"]).slice(12,16)
+      var formatDate = (data["lesson"]["date"]).slice(5).replace("-", "|")
+      console.log(formatDate)
+
       $(".lessonName").text(data["lesson"]["name"]);
-      $(".lessonTime").text(data["lesson"]["time"]);
-      $(".lessonDate").text(data["lesson"]["date"]);
+      $(".lessonTime").text(`${formatTime}`);
+      $(".lessonDate").text(`${formatDate}`);
       $(".js-next").attr("data-id", data["id"]);
     });
   });
