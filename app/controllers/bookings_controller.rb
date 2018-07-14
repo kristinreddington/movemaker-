@@ -3,11 +3,10 @@ class BookingsController < ApplicationController
 
   def show
     @user = current_user
-    @comment = Comment.new
     @booking = Booking.find_by(:id => params[:id])
     respond_to do |format|
       format.html {render :show}
-      format.json {render json: @booking}
+      format.json {render :json => @booking}
     end
   end
 
@@ -23,6 +22,8 @@ class BookingsController < ApplicationController
   def edit
     @user = current_user
     @booking = Booking.find_by(:id => params[:id])
+    @note = Note.new
+    @notes = @booking.notes
     respond_to do |format|
       format.html {render :edit}
       format.json {render json: @booking}
@@ -31,7 +32,7 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find_by(:id => params[:id])
-    @booking.update(booking_params)
+    #@booking.notes.build(params[:text])
     @booking.save
     redirect_to user_path(current_user)
   end
@@ -42,12 +43,6 @@ class BookingsController < ApplicationController
     current_user.bookings.delete(@booking)
     #binding.pry
     redirect_to user_path(current_user)
-  end
-
-  private
-
-  def booking_params
-    params.require(:booking).permit(:comment)
   end
 
 end
