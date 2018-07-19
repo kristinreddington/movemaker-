@@ -9,6 +9,7 @@
     </div>
   </div>
 </nav>
+<div class='pre-scrollable'>
 <h4><%=@booking.lesson.name%></h4>
 
 <div class="notesList">
@@ -19,22 +20,16 @@
 <% end %>
 </div>
 <div class= "form-inline">
-  <%= form_for ([@user,  @booking, @note]), :html => {:id => "new-note"} do |f| %>
+  <%= form_for ([@user, @booking, @note]), :html => {:id => "new-note"} do |f| %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.hidden_field :booking_id, value: @booking.id %>
   <%= f.text_field :text, placeholder: "add note" %>
   <%= f.submit "Post", :id => "note-submit" %><br><br>
   <%end%>
-  <p data-id="<%=@booking.id%>" id="cancelBooking"><%= link_to "Cancel Reservation", delete_booking_path(@booking) %></p>
+  <p data-id="<%=@booking.id%>" id="cancelBooking"><%= link_to "Cancel Reservation", [@user, @booking], :confirm => "Are you sure you want to cancel your reservation?", :method => :delete, :name => request_forgery_protection_token.to_s, :value => form_authenticity_token %></p>
+    </div>
+  </div>
 </div>
-
-
-
-</div>
-
-
-
-
   <!-- bootstrap override -->
 
   <style>

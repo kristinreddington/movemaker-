@@ -9,19 +9,21 @@
     </div>
   </div>
 </nav>
-
+<div class='pre-scrollable'>
 <p class="userName" data-id="<%=@user.id%>"><%= "#{@user.name}'s Scheduled booking" %></p>
 <a href="#" class="js-next" data-userid="<%=@user.id%>"data-id="<%= @booking.id %>">Next</a>
 <br><br>
 <h4 class="lessonName"><%= @booking.lesson.name %></h4>
 <p>Level: <%=@booking.lesson.level%></p>
-<p class="lessonDate"><%= @booking.lesson.date %></p><p class="lessonTime"><%= @booking.lesson.time %></p><br>
+<p class="lessonDate"><%= @booking.lesson.display_date %></p><p class="lessonTime"></p><br>
+
 <div class="noteSection">
   <%@booking.notes.each do |note| %>
 <ol>
   <li><%=note.text%></li>
 </ol>
   <%end%>
+</div>
 </div>
 <!-- bootstrap override -->
 
