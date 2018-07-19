@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-
+skip_before_action :verify_authenticity_token, only: :destroy
 
   def show
     @user = current_user
@@ -32,17 +32,22 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find_by(:id => params[:id])
-    #@booking.notes.build(params[:text])
     @booking.save
     redirect_to user_path(current_user)
   end
 
   def destroy
-    @booking = Booking.find_by(:id => params[:id])
-    #binding.pry
-    current_user.bookings.delete(@booking)
-    #binding.pry
-    redirect_to user_path(current_user)
+    @user = User.find(params[:user_id])
+    @booking = Booking.find(params[:id])
+    title = @booking.lesson.name
+    if @booking.destroy
+      redirect_to user_path(current_user), :success => "Booking cancelled successfully."
+      @user.save
+
+  else
+    flash[:error] = "There was an error cancelling your booking."
+    render :edit
+    end
   end
 
 end
