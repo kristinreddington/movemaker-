@@ -20,16 +20,12 @@
     </div>
   </div>
 </nav>
-
+<div class='pre-scrollable'>
 <% if current_user.admin %>
 <p><%=link_to("New lesson", new_lesson_path)%></p>
 <%end%>
-<ul>
-<% @lessons.each do |lesson| %>
-<p><%= link_to(lesson.name, lesson_path(lesson))%> </p>
-<div id="info-<%= lesson.id %>"></div>
-<button class="js-more" data-id="<%= lesson.id %>">Info...</button>
-<%end%>
+<button class="js-load">Load Lessons</button><button class="js-sort">Order Lessons</button>
+</div>
 
 
 <!--Bootstrap override -->
@@ -58,6 +54,33 @@ footer {
   bottom: 0;
   width: 100%;
 }
+
+button {
+ background: #9ecfca;
+ color: #4f738a;
+ box-shadow: none;
+ font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+ font-weight: 300;
+ font-size: 1em;
+ text-transform: uppercase;
+ border: 0;
+ letter-spacing: 1px;
+ border-radius: 2px;
+ max-height: 30px;
+ margin: 3em;
+}
+
+h4 {
+  -webkit-margin-before: 0.83em;
+    -webkit-margin-after: 0.83em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    display: block;
+    line-height: 1.6;
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin-left: 15px;
+  }
 p {
   -webkit-margin-before: 0.83em;
     -webkit-margin-after: 0.83em;
@@ -71,7 +94,7 @@ p {
 }
 
 li {
-  margin-top: 10px;
+  list-style-type: none; 
 }
 
 </style>

@@ -1,8 +1,11 @@
 $(function(){
   $("#new-note").on("submit", function(e){
     e.preventDefault();
+    var urlElement = e.action
     var url = this.action;
+    console.log(this)
     const data = $(this).serialize();
+    //debugger
     $.ajax({
     type: "POST",
     url: url,
@@ -13,14 +16,15 @@ $(function(){
       let newUserNote = new Note(response.id, response.user_id, response.booking_id, response.text);
       let formattedNote = newUserNote.formatNote();
       $(".notesList").append(formattedNote)
+      $("#note-submit").attr("disabled", false)
     }
   });
 });
 
-function Note(id, user_id, booking_id, text) {
+function Note(id, userId, bookingId, text) {
   this.id = id;
-  this.user_id = user_id;
-  this.booking_id = booking_id;
+  this.userId = userId;
+  this.bookingId = bookingId;
   this.text = text;
 }
 

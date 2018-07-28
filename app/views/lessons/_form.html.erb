@@ -26,6 +26,11 @@
     <%= f.select :level,['beginner', 'intermediate', 'advanced'], class: "form-control" %><br>
   </div>
 
+  <div class="form-control input-sm no-border">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %><br>
+  </div>
+
   <div class="btn">
     <%= f.submit class: "btn btn-primary" %>
   </div>

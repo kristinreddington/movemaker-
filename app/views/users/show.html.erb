@@ -37,7 +37,8 @@
 <h2>Booked Lessons</h2>
 <% @user.bookings.each do |b| %>
 <ul>
-  <li style="display:inline" class="colored-links">  <%= link_to b.lesson.name, user_booking_path(@user,b) %></li>
+  <li class="colored-links"> <%= b.lesson.display_date%></li>
+  <li id="bold" ::before class="colored-links">  <%= link_to b.lesson.name, user_booking_path(@user,b) %></li>
    <li  id="bold" ::before class="colored-links"> <%= link_to "Manage booking", edit_user_booking_path(@user, b) %></li>
  </ul>
 

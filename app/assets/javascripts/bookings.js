@@ -6,13 +6,13 @@ $(function () {
       $(".noteSection").empty()
       var notes = data.notes
       notes.forEach(formatNotes);
-      var formatTime = (data["lesson"]["time"]).slice(12,16)
-      var formatDate = (data["lesson"]["date"]).slice(5).replace("-", "|")
-      console.log(formatDate)
+      console.log(data)
+      var formatLevel = (data["lesson"]["level"])
+      var formatGenre = (data["lesson"]["genre"])
 
       $(".lessonName").text(data["lesson"]["name"]);
-      $(".lessonTime").text(`${formatTime}`);
-      $(".lessonDate").text(`${formatDate}`);
+      $(".lessonGenre").text(data["lesson"]["genre"])
+      $(".lessonLevel").text(data["lesson"]["level"])
       $(".js-next").attr("data-id", data["id"]);
     });
   });
